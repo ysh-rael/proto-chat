@@ -9,6 +9,7 @@ import {
   Typography,
   Divider,
 } from '@mui/material';
+import { sxProps } from './constants';
 
 export default function ChatSidebar({ users, selectedUser, onSelectUser }) {
   return (
@@ -16,18 +17,20 @@ export default function ChatSidebar({ users, selectedUser, onSelectUser }) {
       width={250}
       bgcolor="#f1f1f1"
       p={2}
-      sx={{ borderRight: '1px solid #ddd' }}
+      sx={sxProps['box--ChatSidebar-container']}
     >
-      {/* Logo */}
+      {/* LOGO */}
       <Box display="flex" justifyContent="center" mb={2}>
         <img src="/logo192.png" alt="Chat Logo" width={80} />
       </Box>
 
+      {/* TITULO CONVERSAS */}
       <Typography variant="h6" gutterBottom>
         Conversas
       </Typography>
       <Divider sx={{ mb: 2 }} />
 
+      {/* LISTA DE CONTATOS  */}
       <List>
         {users.map((user) => (
           <ListItemButton
@@ -38,10 +41,13 @@ export default function ChatSidebar({ users, selectedUser, onSelectUser }) {
             <ListItemAvatar>
               <Avatar src={user.avatar} alt={user.name} />
             </ListItemAvatar>
+
             <ListItemText primary={user.name} />
+
           </ListItemButton>
         ))}
       </List>
+
     </Box>
   );
 }

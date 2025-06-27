@@ -1,0 +1,41 @@
+.container_msg {
+    display: flex;
+    flex-direction: column;
+}
+
+.container_msg_from_system,
+.container_msg_from_me {
+    align-items: flex-end !important;
+}
+
+.container_msg_from_bot {
+    align-items: flex-start !important;
+}
+
+.span_msg_date {
+    font-family: monospace;
+    font-size: .68rem;
+    letter-spacing: -1px;
+    color: #5a5f5b;
+}
+
+
+.msg_from_system {
+    background-color: #f2fb6d;
+    color: black;
+}
+
+.msg_from_me {
+    background-color: #1976d2;
+    color: white;
+
+  
+
+}
+
+.msg_from_bot {
+    background-color: #e0e0e0;
+    color: black;
+
+
+}
