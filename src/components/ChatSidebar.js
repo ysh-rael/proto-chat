@@ -21,7 +21,7 @@ export default function ChatSidebar({ users, selectedUser, onSelectUser }) {
     >
       {/* LOGO */}
       <Box display="flex" justifyContent="center" mb={2}>
-        <img src="/logo192.png" alt="Chat Logo" width={80} />
+        <img src="/next.svg" alt="Chat Logo" width={80} />
       </Box>
 
       {/* TITULO CONVERSAS */}

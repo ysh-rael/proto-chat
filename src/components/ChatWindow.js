@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useRef, useEffect } from 'react';
 import {
   Box,
@@ -22,21 +23,32 @@ import ReactMarkdown from 'react-markdown';
 import { sxProps } from './constants';
 import './ChatWindow.css';
 
+const NEXT_PUBLIC_API_IA = process.env['NEXT_PUBLIC_API_IA'];
+console.log("API IA:", NEXT_PUBLIC_API_IA);
+
+
 const MODEL = 'gemma3:4b';
-const { REACT_APP_API_IA, PUBLIC_URL } = process.env;
+
 
 function formatDate(date) {
   try {
     const dt = typeof date === 'string' ? new Date(date) : date;
+    if(!dt) {
+      console.log('sem data')
+      return ''
+    }
 
-    if (Number.isNaN(dt.getTime())) throw new Error('Data inválida');
+    if (Number.isNaN(dt?.getTime())) {
+      console.log('data inválida')
+      return ''
+    }
 
     const formatted = dt.toLocaleString()
       .replace(/,|:\d{2}$/g, ''); // Remove os segundos e a virgula
 
     return formatted;
   } catch (error) {
-    window.console.error('Erro ao formatar data:', error);
+    console.error('Erro ao formatar data:', error);
     return '';
   }
 }
@@ -143,7 +155,7 @@ export default function ChatWindow({ user, currentUser }) {
 
       try {
         const start = performance.now();
-        const response = await fetch(REACT_APP_API_IA, {
+        const response = await fetch(NEXT_PUBLIC_API_IA, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
