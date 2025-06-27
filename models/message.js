@@ -10,8 +10,18 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     sender: {
-      type: DataTypes.ENUM('user', 'bot'),
+      type: DataTypes.ENUM('user', 'bot', 'system'),
       allowNull: false
+    },
+    timestamp: {
+      // Data da mensagem (nome mais comum que "data")
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    },
+    responseTime: {
+      // Tempo de resposta em segundos (float)
+      type: DataTypes.FLOAT,
+      allowNull: true
     }
   });
 
